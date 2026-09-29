@@ -1,0 +1,43 @@
+THREAT INTEL BULLETIN — "Operation Driftwood" (sample / synthetic)
+==================================================================
+
+Summary
+-------
+During incident response we observed a phishing campaign delivering a loader
+that beacons to attacker infrastructure. All indicators below are DEFANGED for
+safe distribution; refang before use.
+
+Delivery
+--------
+Victims received mail from  billing[at]drift-invoices[.]com  with a link to
+  hxxps://drift-invoices[.]com/inv/April[.]html
+which redirected to the staging host
+  hxxp://45[.]138[.]12[.]99/gate[.]php
+
+Command & Control
+-----------------
+The loader resolves a rotating set of algorithmically-generated domains:
+  x7f3k9q2ml4vn8p1[.]xyz
+  q9zzk3v1x8t4b2n7[.]top
+and falls back to a hard-coded C2 at  185[.]220[.]101[.]47  (port 443)
+and IPv6  2001:0db8:85a3:0000:0000:8a2e:0370:7334 .
+
+Internal pivoting was seen toward  192[.]168[.]1[.]50  and  10[.]0[.]0[.]13 .
+
+Files
+-----
+  loader.exe   MD5    44d88612fea8a8f36de82e1278abb02f
+  loader.exe   SHA1   3395856ce81f2b7382dee72602f798b642f14140
+  stage2.bin   SHA256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+
+Exploitation
+------------
+The actor leveraged  CVE-2024-3400  for initial access on the perimeter device.
+
+Extortion
+---------
+Ransom note demanded payment to bitcoin address
+  bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh
+
+(Non-indicators that should be ignored: report.pdf, config.json, main.py,
+ and the benign domain microsoft.com.)
